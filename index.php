@@ -9,12 +9,15 @@
 <body>
   <h1>Items</h1>
 
+  <a href="./create-item.php">Create Item</a>
+
   <table>
     <thead>
       <tr>
         <th>name</th>
         <th>description</th>
         <th>price</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -29,6 +32,7 @@
           echo '<td>' . $item['name'] . '</td>';
           echo '<td>' . $item['description'] . '</td>';
           echo '<td>' . $item['price'] . '</td>';
+          echo '<td>' . '<a href="./edit-item.php?id='.$item['id'].'">Edit</a> | '. '<a href="./scripts/deleteItem.php?id='.$item['id'].'">Delete</a>' . '</td>';
           echo '</tr>';
         }
       ?>

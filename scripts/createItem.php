@@ -15,7 +15,6 @@
     $price = $_POST['price'];
 
     $sql = 'INSERT INTO items (name, description, price) VALUES ("'.$name.'", "'.$description.'", '.$price.');';
-    echo "$sql";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     header('Location: ../index.php');
