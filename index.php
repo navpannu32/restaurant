@@ -7,9 +7,8 @@
   <title>restaurants</title>
 </head>
 <body>
+  <?php require_once 'header.php'; ?>
   <h1>Items</h1>
-
-  <a href="./create-item.php">Create Item</a>
 
   <table>
     <thead>
