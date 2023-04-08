@@ -20,6 +20,8 @@
       </tr>
     </thead>
     <tbody>
+  <?php require_once 'header.php'; ?>
+
       <?php
         require_once 'database/connect.php';
         $sql = 'SELECT * FROM items;';
@@ -31,8 +33,10 @@
           echo '<td>' . $item['name'] . '</td>';
           echo '<td>' . $item['description'] . '</td>';
           echo '<td>' . $item['price'] . '</td>';
-          echo '<td>' . '<a href="./edit-item.php?id='.$item['id'].'">Edit</a> | '. '<a href="./scripts/deleteItem.php?id='.$item['id'].'">Delete</a>' . '</td>';
-          echo '</tr>';
+          if(isset($_COOKIE["name"])){
+            echo '<td>' . '<a href="./edit-item.php?id='.$item['id'].'">Edit</a> | '. '<a href="./scripts/deleteItem.php?id='.$item['id'].'">Delete</a>' . '</td>';
+            echo '</tr>';
+          }
         }
       ?>
     </tbody>
