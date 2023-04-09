@@ -19,6 +19,22 @@
     echo '<h2>' . $item['name'] . '</h2>';
     echo '<p>' . $item['description'] . '</p>';
     echo '<p>' . $item['price'] . '</p>';
+    ?>
+    <form action="/restaurants/scripts/comment/create.php" method="post">
+      <label for="comment">Comment</label>
+      <input type="text" name="comment" id="comment" required>
+      <input type="hidden" name="item_id" value="<?php echo $id; ?>">
+      <input type="hidden" name="user_id" value="<?php echo $_COOKIE['id']; ?>">
+      <input type="submit" value="Create">
+    </form>
+    <?php
+    $sql = 'SELECT * FROM comments WHERE item_id = :id;';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(['id' => $id]);
+    $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($comments as $comment) {
+      echo '<p>' . $comment['comment'] . '</p>';
+    }
   ?>
 </body>
 </html>
