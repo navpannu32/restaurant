@@ -35,7 +35,7 @@
           echo '<td>' . $item['price'] . '</td>';
           echo '<td>' . '<a href="./item/item.php?id='.$item['id'].'">Details</a>';
           if($_COOKIE['role'] == "admin") {
-            echo ' | <a href="./item/edit.php?id='.$item['id'].'">Edit</a> | '. '<a href="./scripts/deleteItem.php?id='.$item['id'].'">Delete</a>' . '</td>';
+            echo ' | <a href="./item/edit.php?id='.$item['id'].'">Edit</a> | '. '<a href="./scripts/item/delete.php?id='.$item['id'].'">Delete</a>' . '</td>';
           }
           echo '</tr>';
         }

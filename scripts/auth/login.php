@@ -1,10 +1,11 @@
 <?php
-  require_once '../database/connect.php';
+  include '../../database/connect.php';
+  echo "hi";
   $email = $_POST['email'];
   $pwd = $_POST['password'];
 
   if (empty($email) || empty($pwd)) {
-    header('Location: ../login.php?error=emptyfields');
+    header('Location: /restaurants/auth/login.php?error=emptyfields');
     exit();
   } else {
     $sql = 'SELECT * FROM users WHERE email="'.$email.'";';
@@ -13,17 +14,18 @@
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($result) {
       if ($pwd == $result['password']) {
+        setcookie("id", $result['id'], time() + (86400 * 30), "/");
         setcookie("name", $result['name'], time() + (86400 * 30), "/");
         setcookie("email", $result['email'], time() + (86400 * 30), "/");
         setcookie("role", $result['role'], time() + (86400 * 30), "/");
-        header('Location: ../index.php');
+        header('Location: /restaurants/index.php');
         exit();
       } else {
-        header('Location: ../login.php?error=wrongpassword');
+        header('Location: /restaurants/auth/login.php?error=wrongpassword');
         exit();
       }
     } else {
-      header('Location: ../login.php?error=nouser');
+      header('Location: /restaurants/auth/login.php?error=nouser');
       exit();
     }
   }
