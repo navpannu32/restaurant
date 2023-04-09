@@ -7,12 +7,12 @@
   <title>Sign Up</title>
 </head>
 <body>
-<?php require_once 'header.php'; ?>
+<?php require_once '../header.php'; ?>
 
   <h1>
     Sign Up
   </h1>
-  <form action="scripts/signup.php" method="post">
+  <form action="../scripts/signup.php" method="post">
     <input type="text" name="name" placeholder="Full name..." required >
     <input type="email" name="email" placeholder="Email..." required >
     <input type="password" name="pwd" placeholder="Password..." required >

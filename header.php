@@ -7,17 +7,17 @@
 </head>
 <body>
   <header>
-    <h1>Restaurant</h1>
+    <h1><a href="/restaurants/index.php" >Restaurant</a></h1>
     <nav>
       <ul>
-        <li><a href="./create-item.php">Create Item</a></li>
-        
-        
+        <?php if($_COOKIE["role"] == "admin") { ?>
+        <li><a href="/restaurants/item/create.php">Create Item</a></li>        
+        <?php }?>
         <?php if(isset($_COOKIE["name"])){ ?>
-          <li><a href="./scripts/logout.php">Logout</a></li>
+          <li><a href="/restaurants/scripts/logout.php">Logout</a></li>
           <?php } else {?>
-            <li><a href="./signup.php">Sign Up</a></li>
-            <li><a href="./login.php">Login</a></li>
+            <li><a href="/restaurants/auth/signup.php">Sign Up</a></li>
+            <li><a href="/restaurants/auth/login.php">Login</a></li>
           <?php } ?>
       </ul>
     </nav>

@@ -9,16 +9,16 @@
 <body>
   <h1>Edit item</h1>
   <?php
-    require_once 'database/connect.php';
+    require_once '../database/connect.php';
     $id = $_GET['id'];
     $sql = 'SELECT * FROM items WHERE id = :id;';
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['id' => $id]);
     $item = $stmt->fetch(PDO::FETCH_ASSOC);
   ?>
-  <?php require_once 'header.php'; ?>
+  <?php require_once '../header.php'; ?>
 
-  <form action="./scripts/editItem.php" method="post">
+  <form action="../scripts/editItem.php" method="post">
     <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
     <label for="name">Name</label>
     <input type="text" name="name" id="name" value="<?php echo $item['name']; ?>">

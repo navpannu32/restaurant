@@ -7,9 +7,9 @@
   <title>Create Item</title>
 </head>
 <body>
-  <?php require_once 'header.php'; ?>
+  <?php require_once '../header.php'; ?>
   <h1>Create Item</h1>
-  <form action="./scripts/createItem.php" method="post">
+  <form action="../scripts/createItem.php" method="post">
     <label for="name">Name</label>
     <input type="text" name="name" id="name" required >
     <label for="description">Description</label>
