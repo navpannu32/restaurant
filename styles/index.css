@@ -1,0 +1,51 @@
+/* Set default font family and size */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+/* Style the page title */
+h1 {
+  margin-top: 30px;
+  font-size: 28px;
+}
+
+/* Style the table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 30px;
+}
+
+/* Style the table header row */
+thead tr {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Style the table header cells */
+th {
+  padding: 10px;
+  text-align: left;
+}
+
+/* Style the table data rows */
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Style the table data cells */
+td {
+  padding: 10px;
+}
+
+/* Style the table actions links */
+td a {
+  color: #333;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+td a:hover {
+  text-decoration: underline;
+}
