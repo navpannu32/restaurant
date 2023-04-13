@@ -11,20 +11,24 @@
   <?php require_once '../header.php'; ?>
   <div class="item-container">
     <h1>Item</h1>
-    <?php
+    <div class="item">
+      <?php
       require_once '../database/connect.php';
       $id = $_GET['id'];
       $sql = 'SELECT * FROM items WHERE id = :id;';
       $stmt = $pdo->prepare($sql);
       $stmt->execute(['id' => $id]);
       $item = $stmt->fetch(PDO::FETCH_ASSOC);
+      echo '<div class="item-content">';
       echo '<h2>' . $item['name'] . '</h2>';
+      echo '<p>' . $item['description'] . '</p>';
+      echo '<p>' . $item['price'] . '</p>';
+      echo '</div>';
       if($item['image']){
         echo '<img src="../images/' . $item['image'] . '" alt="' . $item['name'] . '">';
       }
-      echo '<p>' . $item['description'] . '</p>';
-      echo '<p>' . $item['price'] . '</p>';
       ?>
+    </div>
       <div class="comment-section">
         <form action="/restaurants/scripts/comment/create.php" method="post">
           <label for="comment">Comment</label>
