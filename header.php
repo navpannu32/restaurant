@@ -31,6 +31,8 @@
 body {
   font-family: Arial, sans-serif;
   font-size: 16px;
+  margin: 0;
+  padding: 0;
 }
 
 /* Style the page header */
