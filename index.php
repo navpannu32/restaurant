@@ -21,18 +21,18 @@
       </tr>
     </thead>
     <tbody>
-  <?php require_once 'header.php'; ?>
-
       <?php
         require_once 'database/connect.php';
-        $sql = 'SELECT * FROM items;';
+        $page = $_GET['page'] ?? 1;
+        $offset = ($page - 1) * 10;
+        $sql = 'SELECT * FROM items LIMIT 10 OFFSET '.$offset.';';
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
         foreach ($items as $item) {
           echo '<tr>';
           echo '<td>' . $item['name'] . '</td>';
-          echo '<td>' . $item['description'] . '</td>';
+          echo '<td style="width: 700px;">' . $item['description'] . '</td>';
           echo '<td>' . $item['price'] . '</td>';
           echo '<td>' . '<a href="./item/item.php?id='.$item['id'].'">Details</a>';
           if($_COOKIE['role'] == "admin") {
@@ -43,5 +43,17 @@
       ?>
     </tbody>
   </table>
+  <div class="pagination">
+    <?php
+      $sql = 'SELECT COUNT(*) FROM items;';
+      $stmt = $pdo->prepare($sql);
+      $stmt->execute();
+      $count = $stmt->fetchColumn();
+      $pages = ceil($count / 10);
+      for ($i = 1; $i <= $pages; $i++) {
+        echo '<a href="./index.php?page='.$i.'">'.$i.'</a>';
+      }
+    ?>
+  </div>
 </body>
 </html>
