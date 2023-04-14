@@ -1,9 +1,10 @@
 <?php  
   include '../../database/connect.php';
   
-  $name = $_POST['name'];
-  $description = $_POST['description'];
-  $price = $_POST['price'];
+  $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+  $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
+
+  $price = htmlspecialchars($_GET['price'], ENT_QUOTES, 'UTF-8');
   
   $sql = 'INSERT INTO items (name, description, price) VALUES ("'.$name.'", "'.$description.'", '.$price.');';
   

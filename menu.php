@@ -14,7 +14,11 @@
   <div class="cards-container">
     <?php
       require_once './database/connect.php';
-      $page = htmlspecialchars($_GET['page'], ENT_QUOTES, 'UTF-8')  ?? 1;
+      if(isset($_GET['page']) && $_GET['page'] >= 1) {
+        $page = htmlspecialchars($_GET['page'], ENT_QUOTES, 'UTF-8')  ?? 1;
+      } else {
+        $page = 1;
+      }
       $offset = ($page - 1) * 9;
       $sql = 'SELECT * FROM items LIMIT 9 OFFSET '.$offset.';';
       $stmt = $pdo->prepare($sql);
@@ -27,10 +31,6 @@
         echo '<p>' . $item['description'] . '</p>';
         echo '<p>Price: $' . $item['price'] . '</p>';
         echo '<a href="./item/item.php?id='.$item['id'].'">Details</a>';
-        if($_COOKIE['role'] == "admin") {
-          echo '<br><a href="./item/edit.php?id='.$item['id'].'">Edit</a>';
-          echo '<a href="./scripts/item/delete.php?id='.$item['id'].'">Delete</a>';
-        }
         echo '</div>';
       }
     ?>

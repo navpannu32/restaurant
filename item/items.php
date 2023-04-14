@@ -13,9 +13,13 @@
   <div class="cards-container">
     <?php
       require_once '../database/connect.php';
-      $page = $_GET['page'] ?? 1;
-      $offset = ($page - 1) * 12;
-      $sql = 'SELECT * FROM items LIMIT 12 OFFSET '.$offset.';';
+      if(isset($_GET['page']) && $_GET['page'] >= 1) {
+        $page = htmlspecialchars($_GET['page'], ENT_QUOTES, 'UTF-8')  ?? 1;
+      } else {
+        $page = 1;
+      }
+      $offset = ($page - 1) * 9;
+      $sql = 'SELECT * FROM items LIMIT 9 OFFSET '.$offset.';';
       $stmt = $pdo->prepare($sql);
       $stmt->execute();
       $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -41,7 +45,7 @@
       $stmt = $pdo->prepare($sql);
       $stmt->execute();
       $count = $stmt->fetchColumn();
-      $pages = ceil($count / 12);
+      $pages = ceil($count / 9);
       for ($i = 1; $i <= $pages; $i++) {
         echo '<a href="../index.php?page='.$i.'">'.$i.'</a>';
       }

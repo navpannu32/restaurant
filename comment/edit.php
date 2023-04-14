@@ -10,7 +10,7 @@
   <?php include_once "/header.php" ?>
   <?php
     require_once '../database/connect.php';
-    $id = $_GET['id'];
+    $id = htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8')  ?? 1;
     $sql = 'SELECT * FROM comments WHERE id = :id;';
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['id' => $id]);

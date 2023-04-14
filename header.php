@@ -11,11 +11,17 @@
     <h1 class="logo"><a href="/index.php" >Donut Land</a></h1>
     <nav>
       <ul>
-        <li  class="nav-links">
-          <?php if($_COOKIE['role'] == "admin") { ?>
-            <a href="admin.php">Admin</a>
-          <?php } ?>
-        </li>
+        <?php if($_COOKIE['role'] == "admin") { ?>
+          <li  class="nav-links">
+            <a href="admin/users.php">Users</a>
+          </li>
+          <li class="nav-links">
+            <a href="admin/items.php">Donuts</a>
+          </li>
+          <li  class="nav-links">
+            <a href="admin/comments.php">Comments</a>
+          </li>
+        <?php } ?>
         <?php if(isset($_COOKIE["name"])){ ?>
           <li class="nav-links"><a href="/scripts/auth/logout.php">Logout</a></li>
           <?php } else {?>

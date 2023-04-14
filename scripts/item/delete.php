@@ -1,7 +1,7 @@
 <?php
   
   require_once '../../database/connect.php';
-  $id = $_GET['id'];
+  $id = htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8');
   $sql = 'SELECT image FROM items WHERE id = :id;';
   $stmt = $pdo->prepare($sql);
   $stmt->execute(['id' => $id]);

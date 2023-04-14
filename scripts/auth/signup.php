@@ -1,10 +1,11 @@
 <?php  
   require_once '../../database/connect.php';
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $pwd = $_POST['pwd'];
+  $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+  $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+  $pwd = filter_input(INPUT_POST, 'pwd', FILTER_SANITIZE_STRING);
   $role = $_POST['role'];
-  $pwdrepeat = $_POST['pwdrepeat'];
+
+  $pwdrepeat = filter_input(INPUT_POST, 'pwdrepeat', FILTER_SANITIZE_STRING);
 
   if (empty($name) || empty($email) || empty($pwd) || empty($pwdrepeat)) {
     header('Location: ../../signup.php?error=emptyfields&name=' . $name . '&email=' . $email);
