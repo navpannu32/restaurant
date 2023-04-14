@@ -1,6 +1,6 @@
 
 <?php
-    include '../database/connect.php';
+    include '../../database/connect.php';
 
     $id = $_POST['id'];
     $name = $_POST['name'];
@@ -12,5 +12,5 @@
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
-    header('Location: ../index.php');
+    header('Location: ../../index.php');
   ?>

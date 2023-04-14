@@ -4,49 +4,43 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../styles/item/item.css" >
-  <title>Item</title>
+  <link rel="stylesheet" href="../styles/item/item.css">
+  <title>Item Details</title>
 </head>
 <body>
   <?php require_once '../header.php'; ?>
-  <div class="item-container">
-    <h1>Item</h1>
-    <div class="item">
-      <?php
-      require_once '../database/connect.php';
-      $id = $_GET['id'];
-      $sql = 'SELECT * FROM items WHERE id = :id;';
-      $stmt = $pdo->prepare($sql);
-      $stmt->execute(['id' => $id]);
-      $item = $stmt->fetch(PDO::FETCH_ASSOC);
-      echo '<div class="item-content">';
-      echo '<h2>' . $item['name'] . '</h2>';
-      echo '<p>' . $item['description'] . '</p>';
-      echo '<p>' . $item['price'] . '</p>';
-      echo '</div>';
-      if($item['image']){
-        echo '<img src="../images/' . $item['image'] . '" alt="' . $item['name'] . '">';
-      }
-      ?>
-    </div>
-      <div class="comment-section">
-        <form action="/scripts/comment/create.php" method="post">
+  <?php
+    require_once '../database/connect.php';
+    $id = $_GET['id'] ?? 1;
+    $sql = 'SELECT * FROM items WHERE id = ?;';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$id]);
+    $item = $stmt->fetch(PDO::FETCH_ASSOC);
+    if (!$item) {
+      echo '<h1>Item not found</h1>';
+      exit();
+    }
+  ?>
+  <div class="item">
+    <h1><?php echo $item['name']; ?></h1>
+    <?php if ($item['image']) { ?>
+      <img src="../images/<?php echo $item['image']; ?>" alt="<?php echo $item['name']; ?>">
+    <?php } ?>
+    <p><?php echo $item['description']; ?></p>
+    <p>Price: <?php echo $item['price']; ?></p>
+  </div>
+
+  <div class="comments">
+    <h2>Comments</h2>
+    <form action="/scripts/comment/create.php" method="post">
           <label for="comment">Comment</label>
           <input type="text" name="comment" id="comment" required>
           <input type="hidden" name="item_id" value="<?php echo $id; ?>">
           <input type="hidden" name="user_id" value="<?php echo $_COOKIE['id']; ?>">
           <input type="submit" value="Create">
         </form>
-        <?php
-          $sql = 'SELECT * FROM comments WHERE item_id = :id;';
-          $stmt = $pdo->prepare($sql);
-          $stmt->execute(['id' => $id]);
-          $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
-          foreach ($comments as $comment) {
-            echo '<p>' . $comment['comment'] . '</p>';
-          }
-        ?>
-    </div>
   </div>
+
+  <?php require_once '../footer.php'; ?>
 </body>
 </html>

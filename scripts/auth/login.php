@@ -21,11 +21,11 @@
         header('Location: /index.php');
         exit();
       } else {
-        header('Location: /auth/login.php?error=wrongpassword');
+        header('Location: ../../auth/login.php?error=wrongpassword');
         exit();
       }
     } else {
-      header('Location: /auth/login.php?error=nouser');
+      header('Location: ../../auth/login.php?error=nouser');
       exit();
     }
   }

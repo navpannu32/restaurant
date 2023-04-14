@@ -1,10 +1,8 @@
-/* Center the form on the page */
 form {
   max-width: 400px;
   margin: 0 auto;
 }
 
-/* Style the form fields */
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -20,7 +18,6 @@ select {
   font-family: Arial, sans-serif;
 }
 
-/* Style the submit button */
 button[type="submit"] {
   display: block;
   width: 100%;
@@ -34,7 +31,6 @@ button[type="submit"] {
   cursor: pointer;
 }
 
-/* Style the select element */
 select {
   appearance: none;
   -webkit-appearance: none;

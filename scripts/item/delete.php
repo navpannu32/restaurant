@@ -16,5 +16,5 @@
   $stmt->execute(['id' => $id]);
 
 
-  header('Location: /index.php');  
+  header('Location: ../../index.php');  
 ?>

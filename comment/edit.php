@@ -17,7 +17,7 @@
     $comment = $stmt->fetch(PDO::FETCH_ASSOC);
   ?>
   <main>
-    <form action="/scripts/comment/edit.php" method="post">
+    <form action="../scripts/comment/edit.php" method="post">
       <label for="comment">Comment</label>
       <input type="text" name="comment" id="comment" value="<?php echo $comment['comment'] ?>">
       <input type="hidden" name="id" value="<?php echo $comment['id'] ?>">

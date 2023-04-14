@@ -9,7 +9,9 @@
 </head>
 <body>
 <?php require_once '../header.php'; ?>
-
+  <h1>
+    Login
+  </h1>
   <form action="../scripts/auth/login.php" method="post">
     <input type="email" name="email" placeholder="Email" required>
     <input type="password" name="password" placeholder="Password" required>
