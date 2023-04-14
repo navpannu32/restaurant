@@ -30,7 +30,7 @@
       ?>
     </div>
       <div class="comment-section">
-        <form action="/restaurants/scripts/comment/create.php" method="post">
+        <form action="/scripts/comment/create.php" method="post">
           <label for="comment">Comment</label>
           <input type="text" name="comment" id="comment" required>
           <input type="hidden" name="item_id" value="<?php echo $id; ?>">

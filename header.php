@@ -8,17 +8,17 @@
 </head>
 <body>
   <header>
-    <h1><a href="/restaurants/index.php" >Restaurant</a></h1>
+    <h1><a href="/index.php" >Restaurant</a></h1>
     <nav>
       <ul>
         <?php if($_COOKIE["role"] == "admin") { ?>
-        <li><a href="/restaurants/item/create.php">Create Item</a></li>        
+        <li><a href="/item/create.php">Create Item</a></li>        
         <?php }?>
         <?php if(isset($_COOKIE["name"])){ ?>
-          <li><a href="/restaurants/scripts/auth/logout.php">Logout</a></li>
+          <li><a href="/scripts/auth/logout.php">Logout</a></li>
           <?php } else {?>
-            <li><a href="/restaurants/auth/signup.php">Sign Up</a></li>
-            <li><a href="/restaurants/auth/login.php">Login</a></li>
+            <li><a href="/auth/signup.php">Sign Up</a></li>
+            <li><a href="/auth/login.php">Login</a></li>
           <?php } ?>
       </ul>
     </nav>
