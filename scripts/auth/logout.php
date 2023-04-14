@@ -3,6 +3,6 @@
   setcookie("name", "", time() - 3600, "/");
   setcookie("email", "", time() - 3600, "/");
   setcookie("role", "", time() - 3600, "/");
-  header('Location: /restaurants/index.php');
+  header('Location: /index.php');
   exit();
 ?>
