@@ -11,15 +11,21 @@
     <h1 class="logo"><a href="/index.php" >Donut Land</a></h1>
     <nav>
       <ul>
+      <li>
+        <form action="./search.php" method="GET">
+          <input type="text" name="q" placeholder="Search Donuts">
+          <button type="submit">Search</button>
+        </form>
+      </li>
         <?php if($_COOKIE['role'] == "admin") { ?>
           <li  class="nav-links">
-            <a href="admin/users.php">Users</a>
+            <a href="/admin/users.php">Users</a>
           </li>
           <li class="nav-links">
-            <a href="admin/items.php">Donuts</a>
+            <a href="/admin/items.php">Donuts</a>
           </li>
           <li  class="nav-links">
-            <a href="admin/comments.php">Comments</a>
+            <a href="/admin/comments.php">Comments</a>
           </li>
         <?php } ?>
         <?php if(isset($_COOKIE["name"])){ ?>
@@ -52,8 +58,8 @@ header {
   color: #333;
   text-decoration: none;
 }
-
 nav ul {
+  align-items: center;
   display: flex;
   list-style: none;
   margin: 0;
@@ -73,5 +79,29 @@ nav li a {
 
 nav li a:hover {
   color: #ff9f1a;
+}
+header form {
+  display: flex;
+  align-items: center;
+}
+
+header form input[type="text"] {
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+header form button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+header form button:hover {
+  background-color: #000;
 }
 </style>

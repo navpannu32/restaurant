@@ -1,0 +1,111 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 36px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+h2 {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+p {
+  margin: 10px 0;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+/* Card Styles */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin: 10px 0;
+  overflow: hidden;
+  width: calc(33.333% - 20px);
+}
+
+.card img {
+  display: block;
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.card h2 {
+  font-size: 20px;
+  margin: 10px;
+  text-align: center;
+}
+
+.card p {
+  margin: 10px;
+  text-align: center;
+}
+
+.card a {
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  text-align: center;
+  transition: background-color 0.2s ease-in-out;
+  width: 80%;
+}
+
+.card a:hover {
+  background-color: #0056b3;
+}
+
+/* Pagination Styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.pagination a {
+  background-color: #fff;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  color: #007bff;
+  display: block;
+  margin: 0 10px;
+  padding: 5px 10px;
+  text-align: center;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.pagination a:hover {
+  background-color: #007bff;
+  color: #fff;
+}
