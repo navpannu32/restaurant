@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../styles/user/edit_user.css">
   <title>Edit user</title>
 </head>
 <body>
+<?php require_once '../header.php'; ?>
 <?php
   require_once '../database/connect.php';
 
@@ -14,7 +16,7 @@
     header("Location: ../index.php");
     exit();
   }
-  
+
   $id = htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8');
 
   $sql = 'SELECT * FROM users WHERE id = ?;';
@@ -38,6 +40,8 @@
 
   echo '<h1>Edit User</h1>';
   echo '<form method="post">';
+  echo '<label for="name">Name:</label>';
+  echo '<input type="text" name="name" value="'.$user['name'].'">';
   echo '<label for="email">Email:</label>';
   echo '<input type="email" id="email" name="email" value="'.$user['email'].'" required>';
   echo '<label for="role">Role:</label>';

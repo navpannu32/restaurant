@@ -1,8 +1,7 @@
 <?php
   include '../../database/connect.php';
-  echo "hi";
   $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
-  $pwd = filter_input(INPUT_POST, 'pwd', FILTER_SANITIZE_STRING);
+  $pwd = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
   if (empty($email) || empty($pwd)) {
     header('Location: /auth/login.php?error=emptyfields');
