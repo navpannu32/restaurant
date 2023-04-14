@@ -18,10 +18,6 @@
     <input type="email" name="email" placeholder="Email..." required >
     <input type="password" name="pwd" placeholder="Password..." required >
     <input type="password" name="pwdrepeat" placeholder="Repeat password..." required >
-    <select name="role" id="role">
-      <option value="user">User</option>
-      <option value="admin">Admin</option>
-    </select>
     <button type="submit" name="submit">Sign up</button>
   </form>
 </body>
