@@ -18,7 +18,7 @@ select {
   font-family: Arial, sans-serif;
 }
 
-button[type="submit"] {
+input[type="submit"] {
   display: block;
   width: 100%;
   padding: 10px;
