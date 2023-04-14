@@ -13,7 +13,7 @@
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($result) {
-      if ($pwd == $result['password']) {
+      if (password_verify($pwd, $result['password'])) {
         setcookie("id", $result['id'], time() + (86400 * 30), "/");
         setcookie("name", $result['name'], time() + (86400 * 30), "/");
         setcookie("email", $result['email'], time() + (86400 * 30), "/");

@@ -26,6 +26,8 @@
     }
   }
   
+  $pwd = password_hash($pwd, PASSWORD_DEFAULT);
+
   $sql = 'INSERT INTO users (name, email, password, role) VALUES ("'. $name .'", "'. $email .'", "'. $pwd .'", "'.$role.'");';
   echo $sql;
   $stmt = $pdo->prepare($sql);
