@@ -7,7 +7,7 @@
   <title>Edit delete</title>
 </head>
 <body>
-  <?php include_once "/header.php" ?>
+  <?php include_once "/header" ?>
   <?php
     require_once '../database/connect.php';
     $id = htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8')  ?? 1;
@@ -17,13 +17,13 @@
     $comment = $stmt->fetch(PDO::FETCH_ASSOC);
   ?>
   <main>
-    <form action="../scripts/comment/edit.php" method="post">
+    <form action="../scripts/comment/edit" method="post">
       <label for="comment">Comment</label>
       <input type="text" name="comment" id="comment" value="<?php echo $comment['comment'] ?>">
       <input type="hidden" name="id" value="<?php echo $comment['id'] ?>">
       <input type="submit" value="Edit">
     </form>
-    <form action="/scripts/comment/delete.php" method="post">
+    <form action="/scripts/comment/delete" method="post">
       <input type="hidden" name="id" value="<?php echo $comment['id'] ?>">
       <input type="submit" value="Delete">
     </form>

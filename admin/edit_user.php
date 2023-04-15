@@ -13,7 +13,7 @@
   require_once '../database/connect.php';
 
   if ($_COOKIE['role'] != "admin") {
-    header("Location: ../index.php");
+    header("Location: ../");
     exit();
   }
 
@@ -34,7 +34,7 @@
     $sql = 'UPDATE users SET email = ?, role = ? WHERE id = ?;';
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$email, $role, $id]);
-    header("Location: ./users.php");
+    header("Location: ./users");
     exit();
   }
 
@@ -52,7 +52,7 @@
   echo '<input type="submit" value="Save">';
   echo '</form>';
 
-  require_once '../footer.php';
+  require_once '.footer.php';
 ?>
 
 </body>

@@ -29,10 +29,10 @@
         echo '<h2>' . $item['name'] . '</h2>';
         echo '<p>' . $item['description'] . '</p>';
         echo '<p>Price: $' . $item['price'] . '</p>';
-        echo '<a href="../item/item.php?id='.$item['id'].'">Details</a>';
+        echo '<a href="../item/item?id='.$item['id'].'">Details</a>';
         if($_COOKIE['role'] == "admin") {
-          echo '<br><a href="../item/edit.php?id='.$item['id'].'">Edit</a>';
-          echo '<a href="../scripts/item/delete.php?id='.$item['id'].'">Delete</a>';
+          echo '<br><a href="../item/edit?id='.$item['id'].'">Edit</a>';
+          echo '<a href="../scripts/item/delete?id='.$item['id'].'">Delete</a>';
         }
         echo '</div>';
       }
@@ -47,7 +47,7 @@
       $count = $stmt->fetchColumn();
       $pages = ceil($count / 9);
       for ($i = 1; $i <= $pages; $i++) {
-        echo '<a href="../index.php?page='.$i.'">'.$i.'</a>';
+        echo '<a href="../?page='.$i.'">'.$i.'</a>';
       }
     ?>
   </div>

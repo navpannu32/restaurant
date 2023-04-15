@@ -19,7 +19,7 @@
   <?php require_once '../header.php'; ?>
   
   <h1>Edit item</h1>
-  <form action="../scripts/editItem.php" method="post">
+  <form action="../scripts/editItem" method="post">
     <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
     <label for="name">Name</label>
     <input type="text" name="name" id="name" value="<?php echo $item['name']; ?>">

@@ -10,7 +10,7 @@
 <body>
   <?php require_once '../header.php'; ?>
   <h1>Create Item</h1>
-  <form action="../scripts/item/create.php" method="post" enctype="multipart/form-data">
+  <form action="../scripts/item/create" method="post" enctype="multipart/form-data">
     <label for="name">Name</label>
     <input type="text" name="name" id="name" required >
     <label for="description">Description</label>

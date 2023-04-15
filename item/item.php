@@ -32,15 +32,35 @@
 
   <div class="comments">
     <h2>Comments</h2>
-    <form action="/scripts/comment/create.php" method="post">
+    <form action="/scripts/comment/create" method="post">
           <label for="comment">Comment</label>
           <input type="text" name="comment" id="comment" required>
           <input type="hidden" name="item_id" value="<?php echo $id; ?>">
           <input type="hidden" name="user_id" value="<?php echo $_COOKIE['id']; ?>">
           <input type="submit" value="Create">
         </form>
+
+    <?php
+      $sql = 'SELECT * FROM comments WHERE item_id = ?;';
+      $stmt = $pdo->prepare($sql);
+      $stmt->execute([$id]);
+      $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    ?>
+    <?php if (count($comments) > 0): ?>
+      <div class="comments-container">
+        <?php foreach ($comments as $comment): ?>
+          <div class="comment">
+            <p><?php echo $comment['comment']; ?></p>
+            <p>By: <?php echo $comment['user_id']; ?></p>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    <?php else: ?>
+      <p>No comments found.</p>
+    <?php endif; ?>
+    
   </div>
 
-  <?php require_once '../footer.php'; ?>
+  <?php require_once '.footer.php'; ?>
 </body>
 </html>

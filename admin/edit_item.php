@@ -4,7 +4,7 @@
 require_once '../database/connect.php';
 
   if ($_COOKIE['role'] != "admin") {
-    header("Location: ../index.php");
+    header("Location: ../");
     exit();
   }
   
@@ -27,7 +27,7 @@ require_once '../database/connect.php';
     $sql = 'UPDATE donuts SET name = ?, description = ?, price = ?, image = ? WHERE id = ?;';
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$name, $description, $price, $image, $id]);
-    header("Location: /admin/items.php");
+    header("Location: /admin/items");
     exit();
   }
 
@@ -58,7 +58,7 @@ require_once '../database/connect.php';
   </form>
 
 
-  <?php include '../footer.php'; ?>
+  <?php include '.footer.php'; ?>
 
 </body>
 </html>

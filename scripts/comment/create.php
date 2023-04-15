@@ -15,7 +15,7 @@
   echo $sql;
   $stmt = $pdo->prepare($sql);
   $stmt->execute([]);
-  header('Location: ../../item/item.php?id='.$item_id);
+  header('Location: ../../item/item?id='.$item_id);
   exit();
   
 ?>

@@ -2,7 +2,7 @@
   require_once '../database/connect.php';
 
   if ($_COOKIE['role'] != "admin") {
-    header("Location: ../index.php");
+    header("Location: ../");
     exit();
   }
 
@@ -45,15 +45,15 @@
           <td><?php echo $comment['is_approved'] ? 'Approved' : 'Not Approved'; ?></td>
           <td>
             <?php if (!$comment['is_approved']): ?>
-              <a href="../scripts/comment/approve.php?id=<?php echo $comment['id']; ?>">Approve</a>
+              <a href="../scripts/comment/approve?id=<?php echo $comment['id']; ?>">Approve</a>
             <?php endif; ?>
-            <a href="../scripts/comment/delete.php?id=<?php echo $comment['id']; ?>">Delete</a>
+            <a href="../scripts/comment/delete?id=<?php echo $comment['id']; ?>">Delete</a>
           </td>
         </tr>
       <?php endforeach; ?>
     </tbody>
   </table>
 
-  <?php include_once "../footer.php" ?>
+  <?php include_once ".footer.php" ?>
 </body>
 </html>

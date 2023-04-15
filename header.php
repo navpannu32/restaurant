@@ -8,31 +8,31 @@
 </head>
 <body>
   <header>
-    <h1 class="logo"><a href="/index.php" >Donut Land</a></h1>
+    <h1 class="logo"><a href="/" >Donut Land</a></h1>
     <nav>
       <ul>
       <li>
-        <form action="./search.php" method="GET">
+        <form action="./search" method="GET">
           <input type="text" name="q" placeholder="Search Donuts">
           <button type="submit">Search</button>
         </form>
       </li>
         <?php if($_COOKIE['role'] == "admin") { ?>
           <li  class="nav-links">
-            <a href="/admin/users.php">Users</a>
+            <a href="/admin/users">Users</a>
           </li>
           <li class="nav-links">
-            <a href="/admin/items.php">Donuts</a>
+            <a href="/admin/items">Donuts</a>
           </li>
           <li  class="nav-links">
-            <a href="/admin/comments.php">Comments</a>
+            <a href="/admin/comments">Comments</a>
           </li>
         <?php } ?>
         <?php if(isset($_COOKIE["name"])){ ?>
-          <li class="nav-links"><a href="/scripts/auth/logout.php">Logout</a></li>
+          <li class="nav-links"><a href="/scripts/auth/logout">Logout</a></li>
           <?php } else {?>
-            <li class="nav-links"><a href="/auth/signup.php">Sign Up</a></li>
-            <li class="nav-links"><a href="/auth/login.php">Login</a></li>
+            <li class="nav-links"><a href="/auth/signup">Sign Up</a></li>
+            <li class="nav-links"><a href="/auth/login">Login</a></li>
           <?php } ?>
       </ul>
     </nav>

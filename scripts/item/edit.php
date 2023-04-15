@@ -13,5 +13,5 @@
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
-    header('Location: ../../index.php');
+    header('Location: ../../');
   ?>

@@ -13,7 +13,7 @@
   <h1>
     Sign Up
   </h1>
-  <form action="../scripts/auth/signup.php" method="post">
+  <form action="../scripts/auth/signup" method="post" class="signup">
     <input type="text" name="name" placeholder="Full name..." required >
     <input type="email" name="email" placeholder="Email..." required >
     <input type="password" name="pwd" placeholder="Password..." required >

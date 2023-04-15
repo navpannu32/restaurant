@@ -2,7 +2,7 @@
   require_once '../../database/connect.php';
 
   if ($_COOKIE['role'] != "admin") {
-    header("Location: ../index.php");
+    header("Location: ../");
     exit();
   }
 
@@ -22,6 +22,6 @@
   $stmt = $pdo->prepare($sql);
   $stmt->execute([$is_approved, $id]);
 
-  header("Location: ../../admin/comments.php");
+  header("Location: ../../admin/comments");
   exit();
 ?>

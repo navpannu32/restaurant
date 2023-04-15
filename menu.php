@@ -30,7 +30,7 @@
         echo '<h2>' . $item['name'] . '</h2>';
         echo '<p>' . $item['description'] . '</p>';
         echo '<p>Price: $' . $item['price'] . '</p>';
-        echo '<a href="./item/item.php?id='.$item['id'].'">Details</a>';
+        echo '<a href="./item/item?id='.$item['id'].'">Details</a>';
         echo '</div>';
       }
     ?>
@@ -44,11 +44,11 @@
       $count = $stmt->fetchColumn();
       $pages = ceil($count / 9);
       for ($i = 1; $i <= $pages; $i++) {
-        echo '<a href="./menu.php?page='.$i.'">'.$i.'</a>';
+        echo '<a href="./menu?page='.$i.'">'.$i.'</a>';
       }
     ?>
   </div>
 
-  <?php require_once './footer.php'; ?>
+  <?php require_once 'footer.php'; ?>
 </body>
 </html>

@@ -13,7 +13,7 @@
     require_once '../database/connect.php';
 
     if ($_COOKIE['role'] != "admin") {
-      header("Location: ../index.php");
+      header("Location: ../");
       exit();
     }
 
@@ -63,8 +63,8 @@
             <td><?= $donut['description'] ?></td>
             <td>$<?= number_format($donut['price'], 2) ?></td>
             <td>
-              <a href="./edit_item.php?id=<?= $donut['id'] ?>">Edit</a>
-              <a href="../scripts/item/delete.php?id=<?= $donut['id'] ?>">Delete</a>
+              <a href="./edit_item?id=<?= $donut['id'] ?>">Edit</a>
+              <a href="../scripts/item/delete?id=<?= $donut['id'] ?>">Delete</a>
             </td>
           </tr>
         <?php endforeach ?>
@@ -85,6 +85,6 @@
     <?php endif ?>
   </div>
 
-  <?php require_once '../footer.php'; ?>
+  <?php require_once '.footer.php'; ?>
 </body>
 </html>

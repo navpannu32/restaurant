@@ -10,7 +10,7 @@
     $sql = "SELECT * FROM items WHERE name LIKE '%$searchTerm%' LIMIT $offset, $limit;";
     $countSql = "SELECT COUNT(*) FROM items WHERE name LIKE '%$searchTerm%';";
   } else {
-    header("Location: ./index.php");
+    header("Location: ./");
     exit();
   }
 
@@ -48,7 +48,7 @@
             <h2><?php echo $donut['name']; ?></h2>
             <p><?php echo $donut['description']; ?></p>
             <p>$<?php echo $donut['price']; ?></p>
-            <a href="./item/item.php?id=<?php echo $donut['id']; ?>">View</a>
+            <a href="./item/item?id=<?php echo $donut['id']; ?>">View</a>
           </div>
         <?php endforeach; ?>
       </div>
@@ -58,16 +58,16 @@
       
     <div class="pagination">
       <?php if ($page > 1): ?>
-        <a href="./search.php?page=<?php echo $page - 1; ?>&search=<?php echo $searchTerm; ?>">Prev</a>
+        <a href="./search?page=<?php echo $page - 1; ?>&search=<?php echo $searchTerm; ?>">Prev</a>
       <?php endif; ?>
 
       <?php if ($page < $totalPages): ?>
-        <a href="./search.php?page=<?php echo $page + 1; ?>&search=<?php echo $searchTerm; ?>">Next</a>
+        <a href="./search?page=<?php echo $page + 1; ?>&search=<?php echo $searchTerm; ?>">Next</a>
       <?php endif; ?>
     </div>
   </main>
 
-  <?php include_once "./footer.php" ?>
+  <?php include_once "footer.php" ?>
 </body>
 </html>
 

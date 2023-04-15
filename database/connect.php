@@ -9,6 +9,6 @@
   try {
     $pdo = new PDO($dsn, $username, $password);
   } catch (PDOException $e) {
-    throw new Exception('Connection failed: ' . $e->getMessage());
+    throw new Exception('connect.phpion failed: ' . $e->getMessage());
   }
 ?>

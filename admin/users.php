@@ -13,7 +13,7 @@
   require_once '../database/connect.php';
 
   if ($_COOKIE['role'] != "admin") {
-    header("Location: ../index.php");
+    header("Location: ../");
     exit();
   }
 
@@ -30,12 +30,12 @@
     echo '<td>' . $user['id'] . '</td>';
     echo '<td>' . $user['email'] . '</td>';
     echo '<td>' . $user['role'] . '</td>';
-    echo '<td><a href="./edit_user.php?id='.$user['id'].'">Edit</a> | <a href="../scripts/user/delete.php?id='.$user['id'].'">Delete</a></td>';
+    echo '<td><a href="./edit_user?id='.$user['id'].'">Edit</a> | <a href="../scripts/user/delete?id='.$user['id'].'">Delete</a></td>';
     echo '</tr>';
   }
   echo '</table>';
 
-  require_once '../footer.php';
+  require_once '.footer.php';
 ?>
 
 </body>
