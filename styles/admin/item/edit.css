@@ -8,7 +8,7 @@ h1 {
   margin-bottom: 20px;
 }
 
-form {
+.edit-item form {
   max-width: 500px;
   margin: 0 auto;
   background-color: #fff;
@@ -17,15 +17,15 @@ form {
   box-shadow: 0px 0px 10px #ccc;
 }
 
-label {
+.edit-item label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
 
-input[type="text"],
-input[type="number"],
-textarea {
+.edit-item input[type="text"],
+.edit-item input[type="number"],
+.edit-item textarea {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
@@ -34,12 +34,12 @@ textarea {
   box-sizing: border-box;
 }
 
-textarea {
+.edit-item textarea {
   resize: vertical;
   height: 100px;
 }
 
-input[type="submit"] {
+.edit-item input[type="submit"] {
   background-color: #4caf50;
   color: #fff;
   padding: 10px 20px;
@@ -50,6 +50,6 @@ input[type="submit"] {
   transition: background-color 0.3s ease;
 }
 
-input[type="submit"]:hover {
+.edit-item input[type="submit"]:hover {
   background-color: #3e8e41;
 }
