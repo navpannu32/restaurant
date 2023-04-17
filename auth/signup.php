@@ -9,16 +9,20 @@
 </head>
 <body>
 <?php require_once '../header.php'; ?>
+<div class="signup">
+  
+    <h1>
+      Sign Up
+    </h1>
+    <form action="../scripts/auth/signup" method="post" class="signup">
+      <input type="text" name="name" placeholder="Full name..." required >
+      <input type="email" name="email" placeholder="Email..." required >
+      <input type="password" name="pwd" placeholder="Password..." required >
+      <input type="password" name="pwdrepeat" placeholder="Repeat password..." required >
+      <button type="submit" name="submit">Sign up</button>
+    </form>
+</div>
 
-  <h1>
-    Sign Up
-  </h1>
-  <form action="../scripts/auth/signup" method="post" class="signup">
-    <input type="text" name="name" placeholder="Full name..." required >
-    <input type="email" name="email" placeholder="Email..." required >
-    <input type="password" name="pwd" placeholder="Password..." required >
-    <input type="password" name="pwdrepeat" placeholder="Repeat password..." required >
-    <button type="submit" name="submit">Sign up</button>
-  </form>
+  <?php require_once '../footer.php'; ?>
 </body>
 </html>

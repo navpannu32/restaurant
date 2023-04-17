@@ -8,18 +8,34 @@
   <title>Create Item</title>
 </head>
 <body>
+  <?php
+    require_once '../database/connect.php';
+    $sql = 'SELECT * FROM categories;';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    ?>
   <?php require_once '../header.php'; ?>
+  <div class="container">
   <h1>Create Item</h1>
   <form action="../scripts/item/create" method="post" enctype="multipart/form-data">
     <label for="name">Name</label>
     <input type="text" name="name" id="name" required >
     <label for="description">Description</label>
-    <input type="text" name="description" id="description" required>
+    <textarea name="description" id="description" required></textarea>
     <label for="price">Price</label>
     <input type="number" name="price" id="price" required>
+    <label for="category">Category</label>
+    <select name="category" id="category">
+      <?php foreach ($categories as $category): ?>
+        <option value="<?php echo $category['id']; ?>" <?php if ($category['id'] == $item['category_id']) { echo 'selected'; } ?>><?php echo $category['name']; ?></option>
+      <?php endforeach; ?>
+    </select>
     <label for="image">Image</label>
     <input type="file" name="image" id="image">
     <button type="submit">Create</button>
   </form>
+  </div>
+
 </body>
 </html>

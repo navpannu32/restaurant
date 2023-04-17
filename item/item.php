@@ -27,6 +27,7 @@
       <img src="../images/<?php echo $item['image']; ?>" alt="<?php echo $item['name']; ?>">
     <?php } ?>
     <p><?php echo $item['description']; ?></p>
+    <p>Category: <?php echo $item['category_name']; ?></p>
     <p>Price: <?php echo $item['price']; ?></p>
   </div>
 
@@ -49,10 +50,12 @@
     <?php if (count($comments) > 0): ?>
       <div class="comments-container">
         <?php foreach ($comments as $comment): ?>
+          <?php if($comment["is_approved"]){ ?>
           <div class="comment">
             <p><?php echo $comment['comment']; ?></p>
             <p>By: <?php echo $comment['user_id']; ?></p>
           </div>
+          <?php } ?>
         <?php endforeach; ?>
       </div>
     <?php else: ?>

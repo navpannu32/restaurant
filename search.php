@@ -1,28 +1,50 @@
 <?php
   require_once './database/connect.php';
 
+  $query = htmlspecialchars($_GET['q'] ?? '', ENT_QUOTES, 'UTF-8');
   $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-  $limit = 8;
+  $limit = 9;
   $offset = ($page - 1) * $limit;
 
+  
+  $searchTerm = '';
   if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $searchTerm = htmlspecialchars($_GET['q'], ENT_QUOTES, 'UTF-8');
-    $sql = "SELECT * FROM items WHERE name LIKE '%$searchTerm%' LIMIT $offset, $limit;";
+    $category = htmlspecialchars($_GET['category'] ?? '', ENT_QUOTES, 'UTF-8');
+    
+    $sql = "SELECT * FROM items";
+    
+    $params = array();
+    if (!empty($query)) {
+      $sql .= ' WHERE name LIKE ?';
+      $params[] = '%' . $query . '%';
+    }
+    if (!empty($category)) {
+      if (empty($query)) {
+        $sql .= ' WHERE';
+      } else {
+        $sql .= ' AND';
+      }
+      $sql .= ' category_id = ?';
+      $params[] = $category;
+    }
+    $sql .= ' ORDER BY name ASC;';
+    
     $countSql = "SELECT COUNT(*) FROM items WHERE name LIKE '%$searchTerm%';";
   } else {
     header("Location: ./");
     exit();
   }
-
+  
   $stmt = $pdo->prepare($sql);
-  $stmt->execute();
+  $stmt->execute($params);
   $donuts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+  
   $countStmt = $pdo->prepare($countSql);
   $countStmt->execute();
   $totalResults = $countStmt->fetchColumn();
   $totalPages = ceil($totalResults / $limit);
-
+  
 ?>
 
 <!DOCTYPE html>
@@ -36,10 +58,9 @@
 </head>
 <body>
   <?php include_once "./header.php" ?>
-
   <main>
     <h1>Search Results for "<?php echo $searchTerm; ?>"</h1>
-
+    
     <?php if (count($donuts) > 0): ?>
       <div class="cards-container">
         <?php foreach ($donuts as $donut): ?>
@@ -57,17 +78,18 @@
     <?php endif; ?>
       
     <div class="pagination">
+      <?php if($page > 1): ?>
       <?php if ($page > 1): ?>
-        <a href="./search?page=<?php echo $page - 1; ?>&search=<?php echo $searchTerm; ?>">Prev</a>
+        <a href="./search?q=<?php echo $searchTerm; ?>&page=<?php echo $page - 1; ?>">Prev</a>
       <?php endif; ?>
 
       <?php if ($page < $totalPages): ?>
-        <a href="./search?page=<?php echo $page + 1; ?>&search=<?php echo $searchTerm; ?>">Next</a>
+        <a href="./search?q=<?php echo $searchTerm; ?>&page=<?php echo $page + 1; ?>">Next</a>
       <?php endif; ?>
-    </div>
+      <?php endif; ?>
+    </div>  
   </main>
 
   <?php include_once "footer.php" ?>
 </body>
 </html>
-

@@ -10,6 +10,8 @@
 <body>
   <h1>Menu</h1>
 
+  <p><a href="/item/create">add donut</a></p>
+
   <div class="cards-container">
     <?php
       require_once '../database/connect.php';
@@ -25,7 +27,7 @@
       $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
       foreach ($items as $item) {
         echo '<div class="card">';
-        echo '<img src="'.$item['image'].'" alt="'.$item['name'].'">';
+        echo '<img src="../images/'.$item['image'].'" alt="'.$item['name'].'">';
         echo '<h2>' . $item['name'] . '</h2>';
         echo '<p>' . $item['description'] . '</p>';
         echo '<p>Price: $' . $item['price'] . '</p>';

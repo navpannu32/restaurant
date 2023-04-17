@@ -1,6 +1,6 @@
 <?php
 
-  $dsn = 'mysql:host=localhost;dbname=restaurants';
+  $dsn = 'mysql:host=localhost;dbname=restaurant';
   $username = 'root';
   $password = '';
 
@@ -9,6 +9,6 @@
   try {
     $pdo = new PDO($dsn, $username, $password);
   } catch (PDOException $e) {
-    throw new Exception('connect.phpion failed: ' . $e->getMessage());
+    throw new Exception('connection failed: ' . $e->getMessage());
   }
 ?>

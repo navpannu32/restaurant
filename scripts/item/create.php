@@ -5,9 +5,15 @@
   $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
 
   $price = htmlspecialchars($_GET['price'], ENT_QUOTES, 'UTF-8');
+
+  $price = filter_input(INPUT_POST, 'price', FILTER_SANITIZE_STRING);
+  $price = str_replace(',', '.', $price);
+  $price = floatval($price);
+
+  $category_id = filter_input(INPUT_POST, 'category', FILTER_SANITIZE_STRING);
   
-  $sql = 'INSERT INTO items (name, description, price) VALUES ("'.$name.'", "'.$description.'", '.$price.');';
-  
+  $sql = 'INSERT INTO items (name, description, price, category_id) VALUES ("'.$name.'", "'.$description.'", '.$price.', '.$category_id.');';  
+
   $stmt = $pdo->prepare($sql);
   
   if($stmt->execute()) {

@@ -1,5 +1,4 @@
-/* Styles for the form */
-form {
+.container form {
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -8,23 +7,23 @@ form {
   border: 1px solid #ccc;
 }
 
-form label {
+.container form label {
   margin-bottom: 10px;
 }
 
-form input[type="text"],
-form input[type="email"],
-form input[type="password"],
-form input[type="number"],
-form select {
+.container form input[type="text"],
+.container form input[type="email"],
+.container form input[type="password"],
+.container form input[type="number"],
+.container form select {
   padding: 5px;
   margin-bottom: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
 }
 
-form input[type="submit"],
-form button[type="submit"] {
+.container form input[type="submit"],
+.container form button[type="submit"] {
   background-color: #333;
   color: #fff;
   padding: 10px;
@@ -33,12 +32,11 @@ form button[type="submit"] {
   cursor: pointer;
 }
 
-form input[type="submit"]:hover,
-form button[type="submit"]:hover {
+.container form input[type="submit"]:hover,
+.container form button[type="submit"]:hover {
   background-color: #444;
 }
 
-/* Styles for the h1 heading */
 h1 {
   text-align: center;
   margin-top: 20px;

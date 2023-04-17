@@ -21,6 +21,12 @@
       exit();
     }
   ?>
+  <?php
+    $sql = 'SELECT * FROM categories;';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);    
+  ?>
   <div class="edit-item">
     <h1>Edit Item: <?php echo $item['name']; ?></h1>
     <form action="/scripts/item/update.php" method="post" enctype="multipart/form-data">
@@ -31,6 +37,12 @@
       <textarea name="description" id="description" required><?php echo $item['description']; ?></textarea>
       <label for="price">Price</label>
       <input type="number" name="price" id="price" value="<?php echo $item['price']; ?>" required>
+      <label for="category">Category</label>
+    <select name="category" id="category">
+      <?php foreach ($categories as $category): ?>
+        <option value="<?php echo $category['id']; ?>" <?php if ($category['id'] == $item['category_id']) { echo 'selected'; } ?>><?php echo $category['name']; ?></option>
+      <?php endforeach; ?>
+    </select>
       <label for="image">Image</label>
       <?php if ($item['image']) { ?>
         <img src="../images/<?php echo $item['image']; ?>" alt="<?php echo $item['name']; ?>">
