@@ -4,20 +4,35 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
 <body>
+  <?php
+    require_once dirname(__FILE__).'/database/connect.php';
+    $sql = 'SELECT * FROM categories;';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);    
+  ?>
   <header>
     <h1 class="logo"><a href="/" >Donut Land</a></h1>
     <nav>
       <ul>
       <li>
-        <form action="./search" method="GET">
+        <form action="/search" method="GET">
           <input type="text" name="q" placeholder="Search Donuts">
+          <select name="category">
+          <option value="">All categories</option>
+          <?php foreach ($categories as $category): ?>
+            <option value="<?php echo $category['id']; ?>" <?php if ($category['id'] == $item['category_id']) { echo 'selected'; } ?>><?php echo $category['name']; ?></option>
+          <?php endforeach; ?>
+        </select>
           <button type="submit">Search</button>
         </form>
       </li>
-        <?php if($_COOKIE['role'] == "admin") { ?>
+      <?php if($_COOKIE['role'] == "admin") { ?>
+        <li class="nav-links">
+          <a href="/item/create">Add donut</a>
+        </li>
           <li  class="nav-links">
             <a href="/admin/users">Users</a>
           </li>
@@ -90,6 +105,15 @@ header form input[type="text"] {
   padding: 10px;
   font-size: 16px;
   margin-right: 10px;
+}
+
+header form select {
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+  background-color: #fff;
+  color: #333;
 }
 
 header form button {
