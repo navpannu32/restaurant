@@ -30,3 +30,8 @@ input[type="submit"] {
   font-family: Arial, sans-serif;
   cursor: pointer;
 }
+.error {
+  color: red;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+}

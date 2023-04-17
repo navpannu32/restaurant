@@ -15,6 +15,26 @@
   <form action="../scripts/auth/login" method="post">
     <input type="email" name="email" placeholder="Email" required>
     <input type="password" name="password" placeholder="Password" required>
+    <?php if (isset($_GET['error'])): ?>
+      <p class="error">
+        <?php
+          switch ($_GET['error']) {
+            case 'emptyfields':
+              echo 'Please fill in all fields';
+              break;
+            case 'nouser':
+              echo 'No user found with that email';
+              break;
+            case 'wrongpassword':
+              echo 'Incorrect password';
+              break;
+            default:
+              echo 'An unknown error occurred';
+              break;
+          }
+        ?>
+      </p>
+    <?php endif; ?>
     <input type="submit" name="submit" value="Login">
   </form>
 </body>

@@ -19,6 +19,34 @@
       <input type="email" name="email" placeholder="Email..." required >
       <input type="password" name="pwd" placeholder="Password..." required >
       <input type="password" name="pwdrepeat" placeholder="Repeat password..." required >
+
+      <?php if (isset($_GET['error'])): ?>
+        <p class="error">
+          <?php
+            switch ($_GET['error']) {
+              case 'emptyfields':
+                echo 'Please fill in all fields';
+                break;
+              case 'invalidemail':
+                echo 'Please enter a valid email';
+                break;
+              case 'invalidname':
+                echo 'Please enter a valid name';
+                break;
+              case 'passwordcheck':
+                echo 'Passwords do not match';
+                break;
+              case 'usertaken':
+                echo 'Email is already in use';
+                break;
+              default:
+                echo 'An unknown error occurred';
+                break;
+            }
+          ?>
+        </p>
+      <?php endif; ?>
+
       <button type="submit" name="submit">Sign up</button>
     </form>
 </div>
