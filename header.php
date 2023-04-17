@@ -5,8 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
   <?php
+    session_start();
     require_once dirname(__FILE__).'/database/connect.php';
     $sql = 'SELECT * FROM categories;';
     $stmt = $pdo->prepare($sql);
@@ -29,7 +29,7 @@
           <button type="submit">Search</button>
         </form>
       </li>
-      <?php if($_COOKIE['role'] == "admin") { ?>
+      <?php if($_SESSION['role'] == "admin" || $_SESSION['role'] == "user") { ?>
         <li class="nav-links">
           <a href="/item/create">Add donut</a>
         </li>
@@ -43,7 +43,7 @@
             <a href="/admin/comments">Comments</a>
           </li>
         <?php } ?>
-        <?php if(isset($_COOKIE["name"])){ ?>
+        <?php if(isset($_SESSION["name"])){ ?>
           <li class="nav-links"><a href="/scripts/auth/logout">Logout</a></li>
           <?php } else {?>
             <li class="nav-links"><a href="/auth/signup">Sign Up</a></li>

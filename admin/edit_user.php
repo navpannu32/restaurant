@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../styles/user/edit_user.css">
+  <link rel="stylesheet" href="../styles/admin/user/edit_user.css">
   <title>Edit user</title>
 </head>
 <body>
@@ -12,7 +12,9 @@
 <?php
   require_once '../database/connect.php';
 
-  if ($_COOKIE['role'] != "admin") {
+  session_start();
+
+  if ($_SESSION['role'] != "admin" || $_SESSION['role'] != "user") {
     header("Location: ../");
     exit();
   }
@@ -38,6 +40,8 @@
     exit();
   }
 
+  echo '<div class="container">';
+
   echo '<h1>Edit User</h1>';
   echo '<form method="post">';
   echo '<label for="name">Name:</label>';
@@ -52,7 +56,9 @@
   echo '<input type="submit" value="Save">';
   echo '</form>';
 
-  require_once '.footer.php';
+  echo '</div>';
+
+  require_once '../footer.php';
 ?>
 
 </body>

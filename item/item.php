@@ -11,6 +11,7 @@
   <?php require_once '../header.php'; ?>
   <?php
     require_once '../database/connect.php';
+    session_start();
     $id = htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8')  ?? 1;
     $sql = 'SELECT * FROM items WHERE id = ?;';
     $stmt = $pdo->prepare($sql);
@@ -37,7 +38,7 @@
           <label for="comment">Comment</label>
           <input type="text" name="comment" id="comment" required>
           <input type="hidden" name="item_id" value="<?php echo $id; ?>">
-          <input type="hidden" name="user_id" value="<?php echo $_COOKIE['id']; ?>">
+          <input type="hidden" name="user_id" value="<?php echo $_SESSION['id']; ?>">
           <input type="submit" value="Create">
         </form>
 

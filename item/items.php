@@ -15,6 +15,7 @@
   <div class="cards-container">
     <?php
       require_once '../database/connect.php';
+      session_start();
       if(isset($_GET['page']) && $_GET['page'] >= 1) {
         $page = htmlspecialchars($_GET['page'], ENT_QUOTES, 'UTF-8')  ?? 1;
       } else {
@@ -32,7 +33,7 @@
         echo '<p>' . $item['description'] . '</p>';
         echo '<p>Price: $' . $item['price'] . '</p>';
         echo '<a href="../item/item?id='.$item['id'].'">Details</a>';
-        if($_COOKIE['role'] == "admin") {
+        if($_SESSION['role'] == "admin" || $_SESSION['role'] != "user") {
           echo '<br><a href="../item/edit?id='.$item['id'].'">Edit</a>';
           echo '<a href="../scripts/item/delete?id='.$item['id'].'">Delete</a>';
         }

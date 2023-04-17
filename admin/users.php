@@ -12,8 +12,9 @@
 <?php  
   require_once '../database/connect.php';
 
+  session_start();
 
-  if ($_COOKIE['role'] != "admin") {
+  if ($_SESSION['role'] != "admin" || $_SESSION['role'] != "user") {
     header("Location: ../");
     exit();
   }

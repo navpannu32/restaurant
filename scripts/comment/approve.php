@@ -1,7 +1,9 @@
 <?php
   require_once '../../database/connect.php';
 
-  if ($_COOKIE['role'] != "admin") {
+  session_start();
+
+  if ($_SESSION['role'] != "admin") {
     header("Location: ../");
     exit();
   }
