@@ -12,7 +12,7 @@
   <section class="hero">
     <h1>Welcome to Donut Land</h1>
     <p>Discover our delicious selection of donuts!</p>
-    <a href="menu" class="btn">View Menu</a>
+    <a href="/item/items" class="btn">View Menu</a>
   </section>
   <video autoplay loop muted playsinline id="bg-video">
   <source src="./images/landing-page.mp4" type="video/mp4">

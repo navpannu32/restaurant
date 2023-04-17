@@ -4,18 +4,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles/item/items.css">
+  <link rel="stylesheet" href="../styles/item/items.css">
   <title>Menu</title>
 </head>
 <body>
+  <?php require_once '../header.php'; ?>
   <h1>Menu</h1>
-
-  <p><a href="/item/create">add donut</a></p>
-
   <div class="cards-container">
     <?php
       require_once '../database/connect.php';
-      session_start();
       if(isset($_GET['page']) && $_GET['page'] >= 1) {
         $page = htmlspecialchars($_GET['page'], ENT_QUOTES, 'UTF-8')  ?? 1;
       } else {
@@ -32,11 +29,7 @@
         echo '<h2>' . $item['name'] . '</h2>';
         echo '<p>' . $item['description'] . '</p>';
         echo '<p>Price: $' . $item['price'] . '</p>';
-        echo '<a href="../item/item?id='.$item['id'].'">Details</a>';
-        if($_SESSION['role'] == "admin" || $_SESSION['role'] != "user") {
-          echo '<br><a href="../item/edit?id='.$item['id'].'">Edit</a>';
-          echo '<a href="../scripts/item/delete?id='.$item['id'].'">Delete</a>';
-        }
+        echo '<a href="./item/item?id='.$item['id'].'">Details</a>';
         echo '</div>';
       }
     ?>
@@ -50,9 +43,11 @@
       $count = $stmt->fetchColumn();
       $pages = ceil($count / 9);
       for ($i = 1; $i <= $pages; $i++) {
-        echo '<a href="../?page='.$i.'">'.$i.'</a>';
+        echo '<a href="./items?page='.$i.'">'.$i.'</a>';
       }
     ?>
   </div>
+
+  <?php require_once '../footer.php'; ?>
 </body>
 </html>
