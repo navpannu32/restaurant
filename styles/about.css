@@ -1,0 +1,43 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+}
+.main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.main h1 {
+  font-size: 36px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.main p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.main a {
+  color: #333;
+  text-decoration: underline;
+}
+
+.main a:hover {
+  color: #ff9f1a;
+}
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
