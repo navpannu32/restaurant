@@ -14,7 +14,7 @@
 
     session_start();
 
-    if ($_SESSION['role'] != "admin" || $_SESSION['role'] != "user") {
+    if ($_SESSION['role'] != "admin" && $_SESSION['role'] != "user") {
       header("Location: ../");
       exit();
     }
@@ -87,6 +87,6 @@
     <?php endif ?>
   </div>
 
-  <?php require_once '.footer.php'; ?>
+  <?php require_once '../footer.php'; ?>
 </body>
 </html>

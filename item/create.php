@@ -36,6 +36,7 @@
     <button type="submit">Create</button>
   </form>
   </div>
+  <?php require_once '../footer.php'; ?>
 
 </body>
 </html>

@@ -28,5 +28,6 @@
       <input type="submit" value="Delete">
     </form>
   </main>
+  <?php include_once "/footer" ?>
 </body>
 </html>

@@ -3,7 +3,7 @@
 
   session_start();
 
-  if ($_SESSION['role'] != "admin" || $_SESSION['role'] != "user") {
+  if ($_SESSION['role'] != "admin" && $_SESSION['role'] != "user") {
     header("Location: ../");
     exit();
   }
