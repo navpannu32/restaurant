@@ -9,9 +9,9 @@
   <footer>
     <p>&copy; 2023 Donut Land</p>
     <nav>
-      <a href="#">Home</a>
-      <a href="#">Menu</a>
-      <a href="#">About</a>
+      <a href="/">Home</a>
+      <a href="/item/items">Menu</a>
+      <a href="/about">About</a>
       <a href="#">Contact</a>
     </nav>
   </footer>
@@ -20,6 +20,7 @@
 
 <style>
 footer {
+  position: relative;
   background-color: #F8F8F8;
   padding: 30px 0;
   display: flex;

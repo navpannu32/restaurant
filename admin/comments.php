@@ -25,37 +25,37 @@
 </head>
 <body>
   <?php include_once "../header.php" ?>
+  <main>
+    <h1>Comments</h1>
 
-  <h1>Comments</h1>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Comment</th>
-        <th>Created At</th>
-        <th>User</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php foreach ($comments as $comment): ?>
+    <table>
+      <thead>
         <tr>
-          <td><?php echo $comment['comment']; ?></td>
-          <td><?php echo $comment['created_at']; ?></td>
-          <td><?php echo $comment['user_id']; ?></td>
-          <td><?php echo $comment['is_approved'] ? 'Approved' : 'Not Approved'; ?></td>
-          <td>
-            <?php if (!$comment['is_approved']): ?>
-              <a href="../scripts/comment/approve?id=<?php echo $comment['id']; ?>">Approve</a>
-            <?php endif; ?>
-            <a href="../scripts/comment/delete?id=<?php echo $comment['id']; ?>">Delete</a>
-          </td>
+          <th>Comment</th>
+          <th>Created At</th>
+          <th>User</th>
+          <th>Status</th>
+          <th>Actions</th>
         </tr>
-      <?php endforeach; ?>
-    </tbody>
-  </table>
-
-  <?php include_once ".footer.php" ?>
+      </thead>
+      <tbody>
+        <?php foreach ($comments as $comment): ?>
+          <tr>
+            <td><?php echo $comment['comment']; ?></td>
+            <td><?php echo $comment['created_at']; ?></td>
+            <td><?php echo $comment['user_id']; ?></td>
+            <td><?php echo $comment['is_approved'] ? 'Approved' : 'Not Approved'; ?></td>
+            <td>
+              <?php if (!$comment['is_approved']): ?>
+                <a href="../scripts/comment/approve?id=<?php echo $comment['id']; ?>">Approve</a>
+              <?php endif; ?>
+              <a href="../scripts/comment/delete?id=<?php echo $comment['id']; ?>">Delete</a>
+            </td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+  </main>
+  <?php include_once "../footer.php" ?>
 </body>
 </html>
