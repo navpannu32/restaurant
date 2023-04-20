@@ -1,5 +1,5 @@
 <?php
-  require_once '../database/connect.php';
+  require_once '../../database/connect.php';
 
   session_start();
 
@@ -14,6 +14,6 @@
   $stmt = $pdo->prepare($sql);
   $stmt->execute([$id]);
 
-  header("Location: ./comments");
+  header("Location: /admin/comments");
   exit();
 ?>
