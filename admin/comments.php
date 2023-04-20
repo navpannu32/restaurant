@@ -46,9 +46,12 @@
             <td><?php echo $comment['user_id']; ?></td>
             <td><?php echo $comment['is_approved'] ? 'Approved' : 'Not Approved'; ?></td>
             <td>
-              <?php if (!$comment['is_approved']): ?>
+              <?php if($comment['is_approved']){ ?>
+                <a href="../scripts/comment/approve?id=<?php echo $comment['id']; ?>">Unapprove</a>
+              <?php } else { ?>
                 <a href="../scripts/comment/approve?id=<?php echo $comment['id']; ?>">Approve</a>
-              <?php endif; ?>
+              <?php } ?>
+
               <a href="../scripts/comment/delete?id=<?php echo $comment['id']; ?>">Delete</a>
             </td>
           </tr>

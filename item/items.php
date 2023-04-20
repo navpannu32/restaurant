@@ -29,7 +29,7 @@
         echo '<h2>' . $item['name'] . '</h2>';
         echo '<p>' . $item['description'] . '</p>';
         echo '<p>Price: $' . $item['price'] . '</p>';
-        echo '<a href="./item/item?id='.$item['id'].'">Details</a>';
+        echo '<a href="/item/item?id='.$item['id'].'">Details</a>';
         echo '</div>';
       }
     ?>
