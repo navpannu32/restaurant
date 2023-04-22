@@ -9,6 +9,7 @@
 </head>
 <body>
   <?php
+    session_start();
     require_once '../database/connect.php';
     $sql = 'SELECT * FROM categories;';
     $stmt = $pdo->prepare($sql);
@@ -33,6 +34,14 @@
     </select>
     <label for="image">Image</label>
     <input type="file" name="image" id="image">
+
+    <p>
+      <?php if(isset($_SESSION['error'])): ?>
+        <?php echo $_SESSION['error']; ?>
+        <?php unset($_SESSION['error']); ?>
+      <?php endif; ?>
+    </p>
+
     <button type="submit">Create</button>
   </form>
   </div>

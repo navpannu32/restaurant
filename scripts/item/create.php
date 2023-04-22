@@ -1,15 +1,16 @@
 <?php  
+  session_start();
   include '../../database/connect.php';
   
   $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
   $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
 
   $price = htmlspecialchars($_GET['price'], ENT_QUOTES, 'UTF-8');
-
+  
   $price = filter_input(INPUT_POST, 'price', FILTER_SANITIZE_STRING);
   $price = str_replace(',', '.', $price);
   $price = floatval($price);
-
+  
   $category_id = filter_input(INPUT_POST, 'category', FILTER_SANITIZE_STRING);
   
   $sql = 'INSERT INTO items (name, description, price, category_id) VALUES ("'.$name.'", "'.$description.'", '.$price.', '.$category_id.');';  
@@ -36,18 +37,22 @@
             move_uploaded_file($fileTmpName, $fileDestination);
             $sql = 'UPDATE items SET image = "'.$fileNameNew.'" WHERE id = '.$pdo->lastInsertId().';';
 
+
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
+            header('Location: /');
           } else {
-            echo "Your file is too big!";
+            $_SESSION['error'] = 'Your file is too big!';
+            header('Location: /item/create');
           }
         } else {
-          echo "There was an error uploading your file!";
+          $_SESSION['error'] = "There was an error uploading your file!";
+          header('Location: /item/create');
         }
       } else {
-        echo "You cannot upload files of this type!";
+        $_SESSION['error'] = "You cannot upload files of this type!";
+        header('Location: /item/create');
       }
     }
   }
-  header('Location: ../../');
 ?>
