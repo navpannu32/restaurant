@@ -23,7 +23,7 @@
   ?>
   <div class="edit-item">
     <h1>Edit Item: <?php echo $item['name']; ?></h1>
-    <form action="/scripts/item/edit" method="post" enctype="multipart/form-data">
+    <form action="/scripts/item/edit.php" method="post" enctype="multipart/form-data">
       <input type="hidden" name="id" value="<?php echo $item['id']; ?>">
       <label for="name">Name</label>
       <input type="text" name="name" id="name" value="<?php echo $item['name']; ?>" required>
