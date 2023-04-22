@@ -1,6 +1,6 @@
 <?php
   session_start();
-  include 'database.php';
+  include '../../database/connect.php';
 
   $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
   $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
@@ -9,8 +9,8 @@
   if(isset($_SESSION['id'])) {
     $user_id = $_SESSION['id'];
 
-    echo 'SELECT password FROM users WHERE id = '.$user_id.';';
     $stmt = $pdo->prepare('SELECT password FROM users WHERE id = '.$user_id.';');
+    echo 'SELECT password FROM users WHERE id = '.$user_id.';';
     $stmt->execute();
     $user = $stmt->fetch();
 
@@ -28,7 +28,7 @@
       header('Location: /');
     } else {
       $_SESSION['error'] = 'Incorrect password';
-      header('Location: profile.php');
+      header('Location: /');
     }
   } else {
     header('Location: login.php');
