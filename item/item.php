@@ -54,7 +54,7 @@
           <?php if($comment["is_approved"]){ ?>
           <div class="comment">
             <p><?php echo $comment['comment']; ?></p>
-            <p>By: <?php echo $comment['user_id']; ?></p>
+            <p>By: <?php echo $comment['user_id'] ? $comment['user_id'] : "anonymous"; ?></p>
           </div>
           <?php } ?>
         <?php endforeach; ?>
