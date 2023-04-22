@@ -33,7 +33,7 @@
                         $fileNameNew = uniqid('', true).".".$fileActualExt;
                         $fileDestination = '../../images/'.$fileNameNew;
                         move_uploaded_file($fileTmpName, $fileDestination);
-                        $sql = 'UPDATE item SET image = "'.$fileNameNew.'" WHERE id = '.$id.';';
+                        $sql = 'UPDATE items SET image = "'.$fileNameNew.'" WHERE id = '.$id.';';
                         $stmt = $pdo->prepare($sql);
                         $stmt->execute();
                         header('Location: ../../');
