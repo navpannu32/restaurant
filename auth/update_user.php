@@ -8,6 +8,7 @@
   <title>Update user</title>
 </head>
 <body>
+  <?php session_start(); ?>
 <?php require_once '../header.php'; ?>
   <div class="container">
     <form action="../scripts/auth/update_user.php" method="post">
@@ -17,6 +18,11 @@
       <input type="password" id="password" name="password" required>
       <label for="new-password">New Password:</label>
       <input type="password" id="new-password" name="new_password">
+      <p>
+        <?php if(isset($_SESSION['error'])): ?>
+          <?php echo $_SESSION['error']; ?>
+          <?php unset($_SESSION['error']); ?>
+        <?php endif; ?>
       <input type="submit" value="Update">
     </form>
 </div>

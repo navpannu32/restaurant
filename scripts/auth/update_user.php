@@ -28,7 +28,7 @@
       header('Location: /');
     } else {
       $_SESSION['error'] = 'Incorrect password';
-      header('Location: /');
+      header('Location: /auth/update_user');
     }
   } else {
     header('Location: login.php');
