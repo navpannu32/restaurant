@@ -44,6 +44,7 @@
           </li>
         <?php } ?>
         <?php if(isset($_SESSION["name"])){ ?>
+          <li class="nav-links"><a href="/auth/update_user">Update Info</a></li>
           <li class="nav-links"><a href="/scripts/auth/logout">Logout</a></li>
           <?php } else {?>
             <li class="nav-links"><a href="/auth/signup">Sign Up</a></li>

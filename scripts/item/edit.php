@@ -33,9 +33,11 @@
                         $fileNameNew = uniqid('', true).".".$fileActualExt;
                         $fileDestination = '../../images/'.$fileNameNew;
                         move_uploaded_file($fileTmpName, $fileDestination);
-                        $sql = 'UPDATE items SET image = "'.$fileNameNew.'" WHERE id = '.$id.';';
+                        $sql = 'UPDATE item SET image = "'.$fileNameNew.'" WHERE id = '.$id.';';
                         $stmt = $pdo->prepare($sql);
                         $stmt->execute();
+                        header('Location: ../../');
+
                     } else {
                         echo "Your file is too big!";
                     }
@@ -49,7 +51,7 @@
             $sql = 'UPDATE items SET image = NULL WHERE id = '.$id.';';
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
+            header('Location: ../../');
         }
     }
-    header('Location: ../../');
 ?>
