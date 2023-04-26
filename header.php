@@ -11,7 +11,7 @@
     $sql = 'SELECT * FROM categories;';
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
-    $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);    
+    $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
   ?>
   <header>
     <h1 class="logo"><a href="/" >Donut Land</a></h1>
@@ -23,7 +23,7 @@
           <select name="category">
           <option value="">All categories</option>
           <?php foreach ($categories as $category): ?>
-            <option value="<?php echo $category['id']; ?>" <?php if ($category['id'] == $item['category_id']) { echo 'selected'; } ?>><?php echo $category['name']; ?></option>
+            <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
           <?php endforeach; ?>
         </select>
           <button type="submit">Search</button>

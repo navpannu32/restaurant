@@ -1,6 +1,6 @@
 <?php
     include '../../database/connect.php';
-
+    session_start();
     $id = htmlspecialchars($_POST['id'], ENT_QUOTES, 'UTF-8');
     $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
     $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);

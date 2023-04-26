@@ -39,6 +39,10 @@ h1 {
   height: 100px;
 }
 
+.edit-item img {
+  width: 500px;
+}
+
 .edit-item input[type="submit"] {
   background-color: #4caf50;
   color: #fff;

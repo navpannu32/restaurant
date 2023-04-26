@@ -11,7 +11,6 @@
   <?php require_once '../header.php'; ?>
   <?php
     require_once '../database/connect.php';
-    session_start();
     $id = htmlspecialchars($_GET['id'], ENT_QUOTES, 'UTF-8')  ?? 1;
     $sql = 'SELECT * FROM items WHERE id = ?;';
     $stmt = $pdo->prepare($sql);
@@ -25,10 +24,16 @@
   <div class="item">
     <h1><?php echo $item['name']; ?></h1>
     <?php if ($item['image']) { ?>
-      <img src="../images/<?php echo $item['image']; ?>" alt="<?php echo $item['name']; ?>">
+      <img src="/images/<?php echo $item['image']; ?>" alt="<?php echo $item['name']; ?>">
     <?php } ?>
     <p><?php echo $item['description']; ?></p>
-    <p>Category: <?php echo $item['category_name']; ?></p>
+    <p>Category: <?php 
+      $sql = 'SELECT * FROM categories WHERE id = ?;';
+      $stmt = $pdo->prepare($sql);
+      $stmt->execute([$item['category_id']]);
+      $category = $stmt->fetch(PDO::FETCH_ASSOC);
+      echo $category['name'];
+    ?></p>
     <p>Price: <?php echo $item['price']; ?></p>
   </div>
 

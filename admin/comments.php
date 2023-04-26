@@ -1,18 +1,3 @@
-<?php
-  require_once '../database/connect.php';
-
-  session_start();
-
-  if ($_SESSION['role'] != "admin" && $_SESSION['role'] != "user") {
-    header("Location: ../");
-    exit();
-  }
-
-  $sql = 'SELECT * FROM comments ORDER BY created_at DESC;';
-  $stmt = $pdo->prepare($sql);
-  $stmt->execute();
-  $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +10,19 @@
 </head>
 <body>
   <?php include_once "../header.php" ?>
+<?php
+  require_once '../database/connect.php';
+
+  if ($_SESSION['role'] != "admin") {
+    header("Location: /");
+    exit();
+  }
+
+  $sql = 'SELECT * FROM comments ORDER BY created_at DESC;';
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute();
+  $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
   <main>
     <h1>Comments</h1>
 

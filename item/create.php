@@ -9,7 +9,6 @@
 </head>
 <body>
   <?php
-    session_start();
     require_once '../database/connect.php';
     $sql = 'SELECT * FROM categories;';
     $stmt = $pdo->prepare($sql);
@@ -29,7 +28,7 @@
     <label for="category">Category</label>
     <select name="category" id="category">
       <?php foreach ($categories as $category): ?>
-        <option value="<?php echo $category['id']; ?>" <?php if ($category['id'] == $item['category_id']) { echo 'selected'; } ?>><?php echo $category['name']; ?></option>
+        <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
       <?php endforeach; ?>
     </select>
     <label for="image">Image</label>

@@ -58,7 +58,7 @@
     <?php
       foreach ($items as $item) {
         echo '<div class="card">';
-        echo '<img src="../images/'.$item['image'].'" alt="'.$item['name'].'">';
+        echo '<img src="/images/'.$item['image'].'" alt="'.$item['name'].'">';
         echo '<h2>' . $item['name'] . '</h2>';
         echo '<p>' . $item['description'] . '</p>';
         echo '<p>Price: $' . $item['price'] . '</p>';

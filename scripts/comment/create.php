@@ -1,6 +1,6 @@
 <?php
   include '../../database/connect.php';
-
+  session_start();
   $comment = filter_input(INPUT_POST, 'comment', FILTER_SANITIZE_STRING);
 
   $item_id = htmlspecialchars($_POST['item_id'], ENT_QUOTES, 'UTF-8');

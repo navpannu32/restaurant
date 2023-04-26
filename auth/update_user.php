@@ -8,7 +8,6 @@
   <title>Update user</title>
 </head>
 <body>
-  <?php session_start(); ?>
 <?php require_once '../header.php'; ?>
   <div class="container">
     <form action="../scripts/auth/update_user.php" method="post">

@@ -1,5 +1,6 @@
 <?php  
   require_once '../../database/connect.php';
+  session_start();
   $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
   $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
   $pwd = filter_input(INPUT_POST, 'pwd', FILTER_SANITIZE_STRING);

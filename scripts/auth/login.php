@@ -1,6 +1,6 @@
 <?php
-  include '../../database/connect.php';
   session_start();
+  include '../../database/connect.php';
   $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
   $pwd = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
@@ -14,7 +14,6 @@
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($result) {
       if (password_verify($pwd.'m3tHfWC/ucLrIQlzL6P1ew==', $result['password'])) {
-        session_start();
         $_SESSION['id'] = $result['id'];
         $_SESSION['name'] = $result['name'];
         $_SESSION['email'] = $result['email'];

@@ -65,7 +65,7 @@
       <div class="cards-container">
         <?php foreach ($donuts as $donut): ?>
           <div class="card">
-            <img src="<?php echo $donut['image']; ?>" alt="<?php echo $donut['name']; ?>">
+            <img src="/images/<?php echo $donut['image']; ?>" alt="<?php echo $donut['name']; ?>">
             <h2><?php echo $donut['name']; ?></h2>
             <p><?php echo $donut['description']; ?></p>
             <p>$<?php echo $donut['price']; ?></p>
