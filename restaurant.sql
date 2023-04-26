@@ -31,6 +31,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `categories`
 --
 
+DROP TABLE `categories`;
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -52,6 +53,7 @@ INSERT INTO `categories` (`id`, `name`, `description`) VALUES
 -- Table structure for table `comments`
 --
 
+DROP TABLE `comments`;
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
@@ -75,6 +77,7 @@ INSERT INTO `comments` (`id`, `user_id`, `item_id`, `comment`, `created_at`, `up
 -- Table structure for table `items`
 --
 
+DROP TABLE `items`;
 CREATE TABLE `items` (
   `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
@@ -113,6 +116,7 @@ INSERT INTO `items` (`id`, `name`, `description`, `price`, `image`, `created_at`
 -- Table structure for table `users`
 --
 
+DROP TABLE `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
