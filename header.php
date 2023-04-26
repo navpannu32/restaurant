@@ -29,7 +29,7 @@
           <button type="submit">Search</button>
         </form>
       </li>
-      <?php if($_SESSION['role'] == "admin" || $_SESSION['role'] == "user") { ?>
+      <?php if(isset($_SESSION['role']) && ($_SESSION['role'] == "admin" || $_SESSION['role'] == "user")) { ?>
         <li class="nav-links">
           <a href="/item/create">Add donut</a>
         </li>
