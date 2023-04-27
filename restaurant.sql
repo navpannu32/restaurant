@@ -11,6 +11,12 @@ CREATE DATABASE IF NOT EXISTS `restaurant` DEFAULT CHARACTER SET utf8mb4 COLLATE
 
 USE `restaurant`;
 
+IF NOT EXISTS (SELECT * FROM mysql.user WHERE user = 'nav') THEN
+    CREATE USER 'nav'@'localhost' IDENTIFIED BY 'nav!1';
+    GRANT ALL PRIVILEGES ON restaurant.* TO 'nav'@'localhost';
+END IF;
+
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
