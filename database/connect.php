@@ -1,16 +1,17 @@
 <?php
 
-  $dsn = 'mysql:host=localhost;dbname=restaurant';
-  $username = 'root';
-  $password = '';
+$host = 'restaurant-do-user-13934359-0.b.db.ondigitalocean.com';
+$dbname = 'restaurant';
+$username = 'doadmin';
+$password = 'AVNS_LqX4gbySHT0HIK1lAYn';
+$port = '25060';
+$sslmode = 'REQUIRED';
 
-  $pdo = null;
-
-  try {
-    $pdo = new PDO($dsn, $username, $password);
-  } catch (PDOException $e) {
-    throw new Exception('connection failed: ' . $e->getMessage());
-  }
+try {
+    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;sslmode=$sslmode", $username, $password);
+} catch (PDOException $e) {
+    die("Failed to connect to the database: " . $e->getMessage());
+}
 
   $stmt = $pdo->query("SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'restaurant'");
   $result = $stmt->fetch(PDO::FETCH_ASSOC);
